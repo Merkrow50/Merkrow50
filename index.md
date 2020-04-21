@@ -1,37 +1,111 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Virtual</title>
+    <style>
+      body{
+    background: rgb(135, 206, 235);
 
-You can use the [editor on GitHub](https://github.com/Merkrow50/Merkrow50/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+}
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+header{
+    color: whitesmoke;
+    text-align: center;
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+}
+section{
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.555);
+    font-family: "digital-7";
+    
 
-- Bulleted
-- List
+    
+}
+div {
+        text-align: center;
+        padding: 3px;
+        font-size: 30px;
+}
+footer{
+    color: whitesmoke;
+    text-align: center;
+    font-style: italic;
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+}
+  
+  
+  </style>
+</head>
+<body>
+    <header>
+            <h1>Horas do Dia</h1>
+    </header>
+    <section>
+        
+        <div id="msg">
+            <h1 class="time" id="time">10:00:00</h1>
+        </div>
 
-[Link](url) and ![Image](src)
-```
+        
+       <div id="foto">
+            
+            <img id= "imagem" src="manha.jpg" alt="foto do dia">
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+        </div> 
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Merkrow50/Merkrow50/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+    </section>  
+    <footer>
+        <p>&copy; Ionic inc.</p>
+    </footer>  
+    <script>
+    var msg = window.document.getElementById('msg')
+var img = window.document.getElementById('imagem')
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+var hours, min, sec;
+var clock = function() {
+
+    var date = new Date();
+
+    hours = date.getHours().toString().length < 2 ? "0" + date.getHours() : date.getHours();
+    min = date.getMinutes().toString().length < 2 ? "0" + date.getMinutes() : date.getMinutes();
+    sec = date.getSeconds().toString().length < 2 ? "0" + date.getSeconds() : date.getSeconds();
+
+    var time = hours + ":" + min + ":" + sec;
+    document.getElementById("time").innerHTML = time;
+    if(hours >= 0 && hours < 12){
+        img.src = 'manha.jpg'
+        document.body.style.background = '#FFDD55'
+        
+    }   else if (hours >= 12 && hours <= 18){
+
+        img.src = 'tarde.jpg'
+        document.body.style.background = '#E9AF87'
+    }   else{
+        img.src = 'noite.jpg'
+        document.body.style.background = '#2C3345'
+    }
+ 
+
+
+
+}
+setInterval(  function(){
+    clock()
+}, 1000);
+    
+    
+    </script>
+</body>
+</html>
